@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim Toolkit Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+--primary:#f5c518;
+--primary-dark:#d4a017;
+--navy1:#020617;
+--navy2:#0f172a;
+--navy3:#1e3a8a;
+--gray:#94a3b8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+color:white;
+}
+
+.container{width:100%;max-width:480px;text-align:center;}
+
+/* HEADER */
+.header{margin-bottom:35px;}
+.logo{width:70px;height:70px;border-radius:50%;border:3px solid var(--primary);padding:5px;margin-bottom:15px;box-shadow:0 0 15px rgba(245,197,24,0.6);}
+.header h1{
+font-size:2.2rem;font-weight:900;
+background:linear-gradient(270deg,#ff004c,#ff8a00,#ffee00,#00ff85,#00c8ff,#7c5cff,#ff004c);
+background-size:600% 600%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:rainbow 4s linear infinite;
+}
+@keyframes rainbow{0%{background-position:0%}50%{background-position:100%}100%{background-position:0%}}
+
+/* LOGIN CARD */
+.login-section{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+border:2px solid rgba(245,197,24,0.35);
+border-radius:20px;
+padding:35px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* LOGIN HEADER */
+.login-header{margin-bottom:25px;}
+.login-header h2{font-size:1.5rem;margin-bottom:5px;}
+.login-header p{color:var(--gray);font-size:0.9rem;}
+
+/* FORM */
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;margin-bottom:6px;font-size:0.85rem;font-weight:600;}
+.input-wrapper{position:relative;}
+.input-wrapper i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray);}
+.form-input{
+width:100%;
+padding:14px 14px 14px 42px;
+border-radius:12px;
+border:2px solid rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.05);
+color:white;font-size:0.95rem;
+transition:0.3s;
+}
+.form-input:focus{
+outline:none;
+border-color:var(--primary);
+box-shadow:0 0 10px rgba(245,197,24,0.5);
+}
+.form-input::placeholder{color:var(--gray);}
+
+/* BUTTONS */
+.login-btn, .get-user-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:700;
+font-size:1rem;
+cursor:pointer;
+transition:0.3s;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+}
+.login-btn{
+background:linear-gradient(90deg,var(--primary),var(--primary-dark));
+color:#0f0f12;
+}
+.login-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(245,197,24,0.5);}
+.get-user-btn{
+background:rgba(255,255,255,0.1);
+border:2px solid var(--primary);
+color:var(--primary);
+}
+.get-user-btn:hover{background:var(--primary);color:#0f0f12;transform:translateY(-2px);}
+
+/* SPINNER */
+.spinner{
+width:18px;height:18px;
+border:3px solid rgba(255,255,255,0.3);
+border-top-color:#000;
+border-radius:50%;
+animation:spin 1s linear infinite;
+display:none;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* SUCCESS OVERLAY */
+.success-overlay{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.85);
+display:flex;align-items:center;justify-content:center;flex-direction:column;
+z-index:999;
+opacity:0;
+pointer-events:none;
+transition:0.4s;
+}
+.success-overlay.active{opacity:1;pointer-events:auto;}
+.success-icon{
+font-size:70px;color:#00ff85;margin-bottom:15px;
+animation:pop 0.6s ease;
+}
+@keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
+.success-text{font-size:1.5rem;font-weight:600;}
+
+/* POPUP CARD */
+.popup-overlay{
+position:fixed;inset:0;
+background:rgba(0,0,0,0.7);
+display:flex;align-items:center;justify-content:center;
+opacity:0;visibility:hidden;transition:0.3s;
+z-index:1000;
+}
+.popup-overlay.active{opacity:1;visibility:visible;}
+.popup-card{
+background:linear-gradient(145deg,#001f3f,#003366);
+padding:30px 25px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+max-width:90%;width:350px;transition:0.3s;
+}
+.popup-card h3{color:var(--primary);font-size:1.5rem;margin-bottom:15px;}
+.popup-card p{color:white;font-size:1.1rem;margin-bottom:20px;}
+.popup-card button{
+padding:10px 25px;background:var(--primary);border:none;border-radius:12px;color:#0f0f12;font-weight:700;cursor:pointer;
+transition:0.3s;
+}
+.popup-card button:hover{background:var(--primary-dark);transform:translateY(-2px);}
+
+/* FOOTER */
+.footer{
+width:100%;
+margin-top:40px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,0.1);
+text-align:center;
+color:var(--gray);
+font-size:0.8rem;
+}
+.footer span{color:var(--primary);font-weight:600;}
+
+/* MOBILE */
+@media(max-width:500px){
+.header h1{font-size:1.8rem;}
+.login-section{padding:25px;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<img src="https://i.postimg.cc/ry9zyvF3/Screenshot-2026-03-09-043159.jpg" class="logo">
+<h1>IBRAHIM TOOLKIT</h1>
+</div>
+
+<div class="login-section">
+<div class="login-header">
+<h2><i class="fas fa-lock"></i> Secure Login</h2>
+<p>Enter your credientials to access the toolkit</p>
+</div>
+
+<form id="loginForm" method="POST" action="login.php">
+<div class="form-group">
+<label>Username</label>
+<div class="input-wrapper">
+<i class="fas fa-user"></i>
+<input type="text" name="username" class="form-input" required>
+</div>
+</div>
+
+<div class="form-group">
+<label>Password</label>
+<div class="input-wrapper">
+<i class="fas fa-key"></i>
+<input type="password" name="password" class="form-input" required>
+</div>
+</div>
+
+<button type="submit" class="login-btn">
+<span id="btnText">Login to Toolkit 🚀</span>
+<div class="spinner" id="spinner"></div>
+</button>
+</form>
+
+<button class="get-user-btn" id="getUserBtn">Get User and Password</button>
+</div>
+
+<div class="footer">
+© 2026 <span>Powered By Ibrahim</span> • All Rights Reserved 
+</div>
+</div>
+
+<!-- SUCCESS ANIMATION -->
+<div class="success-overlay" id="successOverlay">
+<div class="success-icon"><i class="fas fa-check-circle"></i></div>
+<div class="success-text">Login Successful</div>
+</div>
+
+<!-- POPUP CARD -->
+<div class="popup-overlay" id="popupOverlay">
+<div class="popup-card">
+<h3>Here is the User and Password</h3>
+<p><strong>Username:</strong> ibrahim</p>
+<p><strong>Password:</strong> ibrahimcyber123</p>
+<button id="closePopupBtn">OK</button>
+</div>
+</div>
+
+<script>
+// LOGIN FORM
+const form = document.getElementById("loginForm")
+const spinner = document.getElementById("spinner")
+const btnText = document.getElementById("btnText")
+const successOverlay = document.getElementById("successOverlay")
+
+form.addEventListener("submit",function(e){
+e.preventDefault();
+spinner.style.display="block"
+btnText.style.display="none"
+
+setTimeout(()=>{
+spinner.style.display="none"
+btnText.style.display="flex"
+successOverlay.classList.add("active")
+
+// Redirect after 2 seconds
+setTimeout(()=>{
+successOverlay.classList.remove("active")
+window.location.href = "tools.html";
+},2000)
+
+},1200)
+})
+
+// POPUP FUNCTIONALITY
+const popupOverlay = document.getElementById('popupOverlay')
+const getUserBtn = document.getElementById('getUserBtn')
+const closePopupBtn = document.getElementById('closePopupBtn')
+
+getUserBtn.addEventListener('click',()=>{popupOverlay.classList.add('active')})
+closePopupBtn.addEventListener('click',()=>{popupOverlay.classList.remove('active')})
+popupOverlay.addEventListener('click', e => {if(e.target===popupOverlay) popupOverlay.classList.remove('active')})
+</script>
+
+</body>
+</html>

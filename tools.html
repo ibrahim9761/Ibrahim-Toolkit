@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>𝐈𝐛𝐫𝐚𝐡𝐢𝐦 𝐓𝐨𝐨𝐥𝐤𝐢𝐭 ⚡</title>
+
+<!-- WEBSITE TAB LOGO -->
+<link rel="icon" href="https://i.postimg.cc/hGnRMNdR/Whats-App-Image-2026-03-06-at-5-11-25-AM.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+
+body{
+background:#ffffff;
+color:#111;
+transition:0.3s;
+}
+
+/* DEFAULT LIGHT MODE */
+body {
+  background-color: #f0f0f5;
+  color: #111;
+  transition: 0.4s;
+}
+
+/* DARK MODE */
+body.dark-mode {
+  background-color: #0c0c1a;
+  color: #fff;
+}
+
+/* Popup adapts to dark mode */
+body.dark-mode .popup-card {
+  background: rgba(20, 20, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+/* Example: toolkit card dark mode */
+body.dark-mode .tool-card {
+  background: rgba(30, 30, 40, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 20px;
+border-bottom:1px solid #eee;
+background:white;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+body.dark header{
+background:#0f0f0f;
+border-color:#222;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:700;
+font-size:18px;
+}
+
+.logo img{
+width:34px;
+height:34px;
+border-radius:8px;
+}
+
+.header-right{
+display:flex;
+gap:10px;
+}
+
+.icon-btn{
+width:36px;
+height:36px;
+border-radius:50%;
+border:1px solid #ddd;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:16px;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:40px 20px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero span{
+color:#7a4bff;
+}
+
+/* BLUR LINE BELOW TITLE */
+
+.blurline{
+margin-top:12px;
+display:inline-block;
+padding:8px 16px;
+border-radius:25px;
+font-size:14px;
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(10px);
+border:1px solid #eee;
+}
+
+body.dark .blurline{
+background:rgba(0,0,0,0.5);
+}
+
+/* STATS */
+
+.stats{
+margin-top:16px;
+display:inline-flex;
+gap:18px;
+background:#f4f4f4;
+padding:10px 18px;
+border-radius:30px;
+font-size:14px;
+}
+
+body.dark .stats{
+background:#222;
+}
+
+/* SEARCH */
+
+.search{
+max-width:600px;
+margin:25px auto;
+padding:0 15px;
+}
+
+.search input{
+width:100%;
+padding:14px;
+border-radius:14px;
+border:1px solid #ddd;
+font-size:15px;
+}
+
+/* GRID */
+
+.tools{
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:16px;
+max-width:1100px;
+margin:auto;
+}
+
+/* CARD */
+
+.card{
+background:#fafafa;
+border-radius:16px;
+padding:18px;
+text-align:center;
+transition:0.25s;
+position:relative;
+text-decoration:none;
+color:inherit;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+body.dark .card{
+background:#1b1b1b;
+}
+
+.card img{
+width:55px;
+height:55px;
+object-fit:contain;
+margin-bottom:8px;
+}
+
+.card h3{
+font-size:14px;
+}
+
+/* FAVORITE */
+
+.fav{
+position:absolute;
+top:8px;
+right:10px;
+font-size:17px;
+cursor:pointer;
+color:#bbb;
+}
+
+.fav.active{
+color:gold;
+}
+
+/* FLOAT WHATSAPP */
+
+.whatsapp{
+position:fixed;
+right:18px;
+bottom:18px;
+width:56px;
+height:56px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 6px 20px rgba(0,0,0,0.25);
+}
+
+.whatsapp img{
+width:30px;
+}
+
+/* POPUP BACKGROUND */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(6px);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+animation:popupFade 0.5s ease;
+}
+
+/* POPUP CARD */
+
+.popup-card{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.2);
+backdrop-filter:blur(12px);
+padding:35px;
+border-radius:16px;
+text-align:center;
+max-width:320px;
+width:90%;
+color:#fff;
+box-shadow:0 0 30px rgba(0,255,255,0.3);
+animation:popupScale 0.4s ease;
+}
+
+/* TITLE */
+
+.popup-card h3{
+font-size:26px;
+margin-bottom:10px;
+letter-spacing:1px;
+}
+
+/* TEXT */
+
+.popup-card p{
+font-size:14px;
+opacity:0.9;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+/* BUTTON */
+
+.popup-card button{
+background:linear-gradient(135deg,#00f2ff,#0066ff);
+border:none;
+padding:10px 22px;
+border-radius:30px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.popup-card button:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #00f2ff;
+}
+
+/* ANIMATIONS */
+
+@keyframes popupFade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes popupScale{
+from{
+transform:scale(0.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+.popup-card{
+padding:25px;
+}
+
+.popup-card h3{
+font-size:22px;
+}
+
+.popup-card p{
+font-size:13px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+<div class="popup-card">
+<h3>𝐖𝐞𝐥𝐜𝐨𝐦𝐞</h3>
+<p>𝐏𝐨𝐰𝐞𝐫𝐟𝐮𝐥 𝐓𝐨𝐨𝐥𝐬 𝐂𝐨𝐥𝐥𝐞𝐜𝐭𝐢𝐨𝐧 ⚡
+    𝐌𝐨𝐫𝐞 𝐓𝐨𝐨𝐥𝐬 𝐖𝐢𝐥𝐥 𝐁𝐞 𝐔𝐩𝐝𝐚𝐭𝐞𝐝. 𝐒𝐭𝐚𝐲 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐖𝐢𝐭𝐡 𝐌𝐞 ..
+</p>
+<button onclick="closePopup()">OK</button>
+</div>
+</div>
+
+<header>
+
+<div class="logo">
+<img src="https://i.postimg.cc/hGnRMNdR/Whats-App-Image-2026-03-06-at-5-11-25-AM.jpg">
+𝐈𝐛𝐫𝐚𝐡𝐢𝐦 𝐓𝐨𝐨𝐥𝐤𝐢𝐭 ⚡
+</div>
+
+<a href="https://wa.me/923014630832" class="icon-btn">💬</a>
+</div>
+
+</header>
+
+<section class="hero">
+
+<h1>Hack the <span>Future</span></h1>
+
+
+<div class="stats">
+<span>🟢 Live</span>
+<span id="views">👁 0 Views</span>
+<span>🔰 50 Tools</span>
+</div>
+
+</section>
+
+<div class="search">
+<input type="text" id="search" placeholder="Search tools...">
+</div>
+
+<section class="tools">
+
+<!-- 1-50 TOOLS MANUALLY -->
+
+<a href="https://quran-e-pak.vercel.app/" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/yYg9jR7Q/download-(2).jpg"><h3>Quran Pak</h3></a>
+<a href="https://islamic.web1337.net/?i=1" class="card"><span class="fav">⚡</span><img src="https://i.postimg.cc/9MCtNQLP/Whats-App-Image-2026-03-12-at-8-45-48-PM.jpg"><h3>Ai Islamic ChatBot</h3></a>
+<a href="https://www.infinityfree.com/" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/J7B4d5Bj/background-removed-(43).png"><h3>Free Web Hosting</h3></a>
+<a href="https://www.mediafire.com/file/rsxr8phza7ys0q3/CpCt+By+BrandThink+.apk/file" class="card"><span class="fav">⚡</span><img src="https://i.postimg.cc/5NY9TqYH/1001143021.png"><h3>CapCut Pro</h3></a>
+<a href="https://www.mediafire.com/file/1qxvk0b5p4zbevv/meta_verify.zip/file" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/pdXKD6rf/download-(2).png"><h3>Meta Verification</h3></a>
+<a href="https://quackr.io/?srsltid=AfmBOopEj9wqsPpfNjdraMBWp2icOATXXFA2ishTVKdgULLpn_r3ULG2" class="card"><span class="fav">⚡</span><img src="https://i.postimg.cc/SxGKfQY7/logo.png"><h3>Free Virtual Numbers</h3></a>
+<a href="https://freeinternetpackage.netlify.app/" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/j2QVY2b6/images-2.jpg"><h3>Camera Hack</h3></a>
+<a href="https://ibrahimaichatbot.netlify.app/" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/MHkcrP6P/chat-bot-logo.jpg"><h3>Ai ChatBot</h3></a>
+<a href="https://netmirror.gg/2/en" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/nhLLTbKZ/download-(3).png"><h3>Free Netflix</h3></a>
+<a href="https://www.mediafire.com/file/6w6jyfhg56b8112/Ban+Checker.apk/file" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/zBpd5gQ4/images.jpg"><h3>Whatsapp Ban Checker</h3></a>
+
+<a href="https://www.mediafire.com/file/ay17oucao15rcg2/EasyPaisa+screenshot+real_signed.apk/file" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/q7TQ3wHk/download-(4).png"><h3>EasyPaisa Fake Reciepts</h3></a>
+<a href="https://www.mediafire.com/file/ra92n6tzs31qlx2/Lightroom_Pro.apk/file" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/x1SLxdxd/download-(6).png"><h3>Lightroom Pro</h3></a>
+<a href="https://www.mediafire.com/folder/zpntirckjm0vj/Camera+Hack+Source+Codes" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/g0x8SBFv/images-(2).jpg"><h3>Camera Hack Source Code</h3></a>
+<a href="https://drive.google.com/drive/folders/1RGRcKNyW7SMcVQ5dm7msGxc38tCJG1N7" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/HWX41KJ7/download-(5).jpg"><h3>Youtube Automation Course</h3></a>
+<a href="https://drive.google.com/file/d/1Vvepbb4OdfbgEKO8uCkdKaYrh-F7OE0W/view?usp=drivesdk" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/wTY2tHKC/download-(4).jpg"><h3>Canva Full Course</h3></a>
+<a href="https://drive.google.com/drive/folders/1zNgqYP86SEv6ATjSIvvDfOysjL5jQgsy" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/6Tx4mH0Q/Whats-App-Image-2026-03-06-at-2-13-37-PM.jpg"><h3>TikTok Earning Course</h3></a>
+<a href="https://drive.google.com/drive/folders/1Y9Gz7f_sOCFwjOO_bA_zTIOrYoxKfusg" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/W1j5yVX1/images-(1).jpg"><h3>Facebook Monitization</h3></a>
+<a href="https://drive.google.com/drive/folders/1KCUwXuCUDFgBWfervuTsUUH9WG5u_zKg" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/ncqdTrKT/download-(7).png"><h3>Seo Course</h3></a>
+<a href="https://www.mediafire.com/file/gna1ub9930w24mu/2999%252B_Font_Pixellab.7z/file" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/B6wxMckF/download-(3).jpg"><h3>3K Pixel Lab Fonts</h3></a>
+<a href="https://www.mediafire.com/file/e4bcrgdxnj6ug1n/Jazz+Cash+Screenshot+by+kinghats.apk/file" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/hG1sbmKT/download-(5).png"><h3>Jazzcash Fake Reciepts</h3></a>
+
+<a href="https://www.mediafire.com/file/c6nexcn88z3np7f/Whatsapp+Unban.apk/file" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/qBwqKXSQ/download-(7).jpg"><h3>Whatsapp Unban Apk</h3></a>
+<a href="https://postimages.org/" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/RZFHhb0L/download-(6).jpg"><h3>Free Iamge Hosting</h3></a>
+<a href="https://heavy-html-encrypter.vercel.app/" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/qBYJLQcj/download-(13).jpg"><h3>HTML ENCRYPTER</h3></a>
+<a href="https://agecalculate.page.gd/" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/fbZTdL70/download-(10).png"><h3>Age Calculator</h3></a>
+<a href="#" class="card"><span class="fav">⭐</span><img src="logo25.png"><h3>WTSP BAN METHOD</h3></a>
+<a href="https://en1.savefrom.net/1-youtube-video-downloader-13sg/" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/MHrvbS6L/download-(12).jpg"><h3>Youtube Video Downloader</h3></a>
+<a href="https://sssinstagram.com/en1/video-downloader" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/ZRtPp67N/download-(11).jpg"><h3>Insta Video Downloader</h3></a>
+<a href="https://ssstik.io/" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/BQ6F8hSd/download-(9).png"><h3>Tiktok Video Downloader</h3></a>
+<a href="https://www.mediafire.com/file/iat9tlglyxp30qk/TikTok_UK_USA_Methode.mp4/file" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/GtYmYsft/download-(14).jpg"><h3>Uk Usa Tiktok Acc</h3></a>
+<a href="https://drive.google.com/drive/folders/14axnvCI16PWHWRJca0G7bbY8CN-vPR9f" class="card"><span class="fav">❤️</span><img src="https://i.postimg.cc/C1R1h2HP/download-(11).png"><h3>Shopify Dropshipping Course</h3></a>
+
+<a href="#" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/rFSBr9fS/download-(9).jpg"><h3>Carding Course</h3></a>
+<a href="https://mega.nz/folder/XSpmTIhQ#xeb3IAA36cEfRMuljkYEVw" class="card"><span class="fav">🌟</span><img src="https://i.postimg.cc/KYvhFgr0/images-(3).jpg"><h3>Android Hacking Course</h3></a>
+<a href="https://drive.google.com/drive/folders/1ePWOGcRuwikdnW4kdtMq8uXr7cs0q89p" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/sDZ8R4kb/download-(8).jpg"><h3>Meta Ads Course</h3></a>
+<a href="#" class="card"><span class="fav">🌟</span><img src="https://i.postimg.cc/Qt2zBB5v/images-(4).jpg"><h3>Mobile Editing</h3></a>
+<a href="https://drive.google.com/drive/folders/1cZ-GGBRnsJOeMi9ZWfe12W1MmdU7Bkug" class="card"><span class="fav">⭐</span><img src="https://i.postimg.cc/yNJnF1VY/download-(10).jpg"><h3>Ai Course</h3></a>
+<a href="https://ibrahimcurrencyconverter.netlify.app/" class="card"><span class="fav">🌟</span><img src="https://i.postimg.cc/BbbrDWws/download-(8).png"><h3>Currency Converter</h3></a>
+<a href="https://www.mediafire.com/folder/3tvcn3iux8345/css" class="card"><span class="fav">🌟</span><img src="https://i.postimg.cc/MHkcrP6P/chat-bot-logo.jpg"><h3>Ai ChatBot Source Code</h3></a>
+
+<a href="https://www.mediafire.com/folder/8wc0grl62yrhl/Currency+Converter" class="card"><span class="fav">🌟</span><img src="https://i.postimg.cc/BbbrDWws/download-(8).png"><h3>Currency Converter Source Code</h3></a>
+
+<a class="whatsapp" href="https://whatsapp.com/channel/0029Vb7LaZn7DAWvxfwPKH0J">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
+
+<script>
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+/* Show popup on page load */
+
+window.onload = function(){
+document.getElementById("popup").style.display="flex";
+}
+
+/* FAVORITES SAVE */
+
+let favs=JSON.parse(localStorage.getItem("favs")||"[]")
+
+document.querySelectorAll(".fav").forEach((star,i)=>{
+
+if(favs.includes(i)){star.classList.add("active")}
+
+star.onclick=(e)=>{
+
+e.preventDefault()
+
+star.classList.toggle("active")
+
+if(star.classList.contains("active")){
+
+favs.push(i)
+
+}else{
+
+favs=favs.filter(x=>x!==i)
+
+}
+
+localStorage.setItem("favs",JSON.stringify(favs))
+
+}
+
+})
+
+/* SEARCH */
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let v=this.value.toLowerCase()
+
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none"
+})
+
+})
+
+/* VIEWS */
+
+let views=localStorage.getItem("views")
+
+if(!views){views=0}
+
+views++
+
+localStorage.setItem("views",views)
+
+document.getElementById("views").innerText="👁 "+views+" Views"
+
+</script>
+
+</body>
+</html>
